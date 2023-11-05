@@ -19,6 +19,7 @@ module.exports = {
 	},
 	validateQuery: (schema) => {
 		return (req, res, next) => {
+
 			const result = joi.validate(req.query, schema, (err, value) => {
 				if (err) {
 					return res.status(422).json({
@@ -74,30 +75,15 @@ module.exports = {
 			id: joi.string().required(),
 		}),
 
-		/*filterInteractionSchema :joi.array().items(joi.object({
-			interactions:joi.string().required()
-		})),*/
-
-		filterInteractionSchema: joi.object().keys({
-			interactions: joi.array().required()
-		}),
-
-		connectionStatusSchema: joi.object().keys({
-			status: joi.string().required(),
-			connection_id: joi.string().required()
-		}),
-
-		connectionListSchema: joi.object().keys({
-			status: joi.string().required()
-		}),
-
 		ratingSchema: joi.object().keys({
 			rating: joi.number().required(),
 			to_user_id: joi.string().required()
 		}),
 
-		requestStatusSchema: joi.object().keys({
-			status: joi.string().required(),
+		createCategorySchema: joi.object().keys({
+			name: joi.string().required(),
+			parent_id: joi.string().empty(''),
+			image_path: joi.string().empty(''),
 		}),
 
 	}

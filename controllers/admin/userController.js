@@ -1,17 +1,18 @@
 var mongoose = require('mongoose');
-var User = require("../models/user");
-var Otp = require("../models/otp");
+var User = require("../../models/user");
+var Otp = require("../../models/otp");
 const JWT = require('jsonwebtoken');
-const helperFxn = require('../helpers/hashPasswords');
-const responseHelper = require('../helpers/responseHelper');
+const helperFxn = require('../../helpers/hashPasswords');
+const responseHelper = require('../../helpers/responseHelper');
 let bcrypt = require("bcryptjs");
 const uid = require('uid');
 const fs = require('fs');
+const config = require("../../config/auth.config.js");
 
 signtoken = user => {
   return JWT.sign({
     id: user._id
-  }, "fmccskmdnjfnfrnrfjnfrjn");
+  }, config.secret)
 }
 
 

@@ -42,7 +42,7 @@ var UserSchema = new Schema({
         toJSON: {
             virtuals: true
         },
-    });
+    }, { timestamps: true });
 
 UserSchema.virtual('profile_image_link').get(function () {
     return this.profile_image != null ? "http://137:3000/profile/" + this.profile_image : "";
