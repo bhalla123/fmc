@@ -35,8 +35,7 @@ module.exports = {
       // Match email
       const emailCheck = await User.findOne({
         email: req.body.email,
-        role: req.body.role,
-        login_type: req.body.login_type
+        role: req.body.role
       });
 
       if (emailCheck) {
